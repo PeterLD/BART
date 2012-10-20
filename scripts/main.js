@@ -24,15 +24,27 @@ function setLocalTime(){
 		.append(currentHours + ":" + currentMinutes + abbreviation);
 }
 
-function prepareStations(){
+function prepareOrigin(){
 	$.get('http://api.bart.gov/api/stn.aspx?cmd=stns&key=MW9S-E7SL-26DU-VV8V', function(data){
-		$departureStation = $('#departureStation');
-		$departureStation.empty();
+		$origin = $('#origin');
+		$origin.empty();
 		$(data).find('station').each(function(){
 			var stationName = $(this).find('name').text();
-			$departureStation.append('<option>' + stationName + '</option>');
+			var stationAbbr = $(this).find('abbr').text();
+			$origin.append('<option data-abbr="' + stationAbbr + '">' + stationName + '</option>');
 		});
-		
+	});
+}
+
+function prepareDestination(){
+	$.get('http://api.bart.gov/api/stn.aspx?cmd=stns&key=MW9S-E7SL-26DU-VV8V', function(data){
+		$destination = $('#destination');
+		$destination.empty();
+		$(data).find('station').each(function(){
+			var stationName = $(this).find('name').text();
+			var stationAbbr = $(this).find('abbr').text();
+			$destination.append('<option data-abbr="' + stationAbbr + '">' + stationName + '</option>');
+		});
 	});
 }
 
@@ -40,4 +52,5 @@ setLocalTime();
 setInterval(function(){
 	setLocalTime();
 }, 1000);
-prepareStations();
+prepareOrigin();
+prepareDestination();
