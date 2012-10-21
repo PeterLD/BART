@@ -33,6 +33,7 @@ function prepareOrigin(){
 			var stationAbbr = $(this).find('abbr').text();
 			$origin.append('<option data-abbr="' + stationAbbr + '">' + stationName + '</option>');
 		});
+		disableOriginAsDestination();
 	});
 }
 
@@ -45,12 +46,49 @@ function prepareDestination(){
 			var stationAbbr = $(this).find('abbr').text();
 			$destination.append('<option data-abbr="' + stationAbbr + '">' + stationName + '</option>');
 		});
+		disableOriginAsDestination();
 	});
 }
 
-setLocalTime();
-setInterval(function(){
+function disableOriginAsDestination() {
+	var $destination = $('#destination option:selected');
+	var originAbbr = $('#origin option:selected').attr('data-abbr');
+	var destinationAbbr = $destination.attr('data-abbr');
+
+	$('#destination option').each(function(){
+		var $option = $(this);
+
+		if($option.attr('disabled')) {
+			$option.removeAttr('disabled');
+		}
+
+		if($option.attr('data-abbr') === originAbbr) {
+			$option.attr('disabled', 'true');
+		}
+	});
+
+	// shift destination if it's the same as the origin
+	if(originAbbr === destinationAbbr){
+
+		if($destination.not(':last-child')) {
+			$destination.removeAttr('selected')
+				.next('option').attr('selected', 'selected');
+		} else {
+			$destination.removeAttr('selected');
+			$('#origin:first-child').attr('selected', 'selected');
+		}
+	}
+}
+
+$(function(){
 	setLocalTime();
-}, 1000);
-prepareOrigin();
-prepareDestination();
+	setInterval(function(){
+		setLocalTime();
+	}, 1000);
+	prepareOrigin();
+	prepareDestination();
+});
+
+$('#origin').change(function(){
+	disableOriginAsDestination();
+});
