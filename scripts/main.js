@@ -34,6 +34,7 @@ function prepareOrigin(){
 			$origin.append('<option data-abbr="' + stationAbbr + '">' + stationName + '</option>');
 		});
 		disableOriginAsDestination();
+		getBikeFriendliness();
 	});
 }
 
@@ -47,6 +48,7 @@ function prepareDestination(){
 			$destination.append('<option data-abbr="' + stationAbbr + '">' + stationName + '</option>');
 		});
 		disableOriginAsDestination();
+		getBikeFriendliness();
 	});
 }
 
@@ -80,6 +82,48 @@ function disableOriginAsDestination() {
 	}
 }
 
+function getBikeFriendliness() {
+	var originAbbr = $('#origin option:selected').attr('data-abbr');
+	var destinationAbbr = $('#destination option:selected').attr('data-abbr');
+	var query = "http://api.bart.gov/api/sched.aspx?cmd=depart&orig=" + originAbbr + "&dest=" + destinationAbbr + "&date=now&key=MW9S-E7SL-26DU-VV8V&b=0&a=4";
+
+	$.get(query, function(data){
+		var departureTime,
+			bikeFriendly;
+
+		$(data).find('request trip').each(function(i) {
+			var $trip = $(this);
+			
+			// loops through each leg to make sure they're all bike friendly
+			// sets bikeFriendly to false and exits loop if it's not
+			$trip.find('leg').each(function() {
+				if( $(this).attr('bikeflag') === "1" ) {
+					bikeFriendly = true;
+					departureTime = $trip.attr('origTimeMin').replace(/\s/g,'');
+				} else {
+					bikeFriendly = false;
+					return false;
+				}
+			});
+
+			if(bikeFriendly && i === 0) {
+				$('#result').empty()
+					.append("better mount up rough rider. Next train is at " + departureTime + ".");
+				return false;
+			} else if(bikeFriendly && i > 0) {
+				$('#result').empty()
+					.append("just hang tight. Next train is at " + departureTime + ".");
+				return false;
+			}
+		});
+
+		if (!bikeFriendly) {
+			$('#result').empty()
+				.append("it looks like it's gonna be a while :/");
+		}
+	});
+}
+
 $(function(){
 	setLocalTime();
 	setInterval(function(){
@@ -91,4 +135,9 @@ $(function(){
 
 $('#origin').change(function(){
 	disableOriginAsDestination();
+	getBikeFriendliness();
+});
+
+$('#destination').change(function(){
+	getBikeFriendliness();
 });
