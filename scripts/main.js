@@ -5,11 +5,15 @@ function setLocalTime(){
 	var abbreviation = "";
 
 	// Convert to 12 hour time
-	if(currentHours > 12) {
+	if(currentHours >= 12) {
 		currentHours -= 12;
 		abbreviation = "PM";
 	} else {
 		abbreviation = "AM";
+	}
+
+	if(currentHours === 0) {
+		currentHours = 12;
 	}
 
 	// Normalize minute display under 10
