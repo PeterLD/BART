@@ -21,25 +21,25 @@
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
         <![endif]-->
+        <div role="application">
+            <header role="banner">
+                <hgroup>
+                    <h1>Can I Bring my Bike on <span class="bart">BART</span></h1>
+                    <h2>Because finding this info on BART's website is extremely hard and sucky. Life should be funner.</h2>
+                </hgroup>
+            </header>
 
-        <header role="banner">
-            <hgroup>
-                <h1>Can I Bring my Bike on BART</h1>
-                <h2>Because finding this info on BART's website is extremely hard and sucky. Life should be funner.</h2>
-            </hgroup>
-        </header>
+            <section role="main">
+                <p>It's currently <time id="localTime" datetime=""></time>, so if you're leaving from 
+                <select id="origin"></select> and headed to <select id="destination"></select>, <span id="result"></span></p>
+            </section>
 
-        <section role="main">
-            <p>It's currently <time id="localTime" datetime=""></time>, so if you're leaving from 
-            <select id="origin"></select> and headed to <select id="destination"></select>, <span id="result"></span></p>
-        </section>
-
-        <footer role="contentinfo">
-            <p>a Do you have the chops to work at ZenDesk collabo</p>
-            <p>copyleft 2012</p>
-            <p>99 riders served</p>
-        </footer>
-
+            <footer role="contentinfo">
+                <p id="attribution">a <em>Do you have the chops to work at <span class="zendesk-logo">zendesk</span></em> collabo</p>
+                <p id="ticker">99 riders served</p>
+                <p id="copyright">copyleft 2012</p>
+            </footer>
+        </div>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="scripts/vendor/jquery.min.js"><\/script>')</script>
         <script src="scripts/vendor/date-min.js"></script>

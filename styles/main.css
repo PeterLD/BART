@@ -1,13 +1,98 @@
 body {
+	font-size: 100%;
+	font-weight: normal;
 	font-family: PFDinTextPro-Regular, Helvetica, Arial, sans-serif;
 }
 
-select {
-	font-family: PFDinTextPro-Regular;
+div[role="application"] {
+	margin: 0 auto;
+	width: 60%
+}
+
+header {
+	margin-top: 75px;
+	padding-bottom: 15px;
+	border-bottom: 1px solid #D1D1D1;
 }
 
 h1 {
-	color: #1186D0;
+	color: #009ADA;
+	margin: 0;
 	text-transform: uppercase;
 	font-family: PFDinTextPro-Bold, Helvetica, Arial, sans-serif;
+	font-size: 3em;
+	font-weight: normal;
+}
+
+.bart {
+	color: #000;
+}
+
+h2 {
+	color: #8C8C8C;
+	margin: 0;
+	font-family: PFDinTextPro-Light, Helvetica, Arial, sans-serif;
+	font-size: 0.9em;
+	font-weight: normal;
+	font-style: italic;
+	letter-spacing: 0.1em;
+}
+
+time {
+	color: #6CAEC9;
+}
+
+#result {
+	color: #C55200;
+	font-style: italic;
+}
+
+section[role="main"] {
+	color: #5C5C5C;
+	padding: 75px 0;
+	font-family: PFDinTextPro-Light, Helvetica, Arial, sans-serif;
+	font-weight: normal;
+	font-size: 2.5em;
+	line-height: 1.5em;
+}
+
+section[role="main"] p {
+	margin: 0;
+}
+
+footer {
+	font-family: Arial;
+	font-size: 0.8em;
+	font-style: italic;
+	color: #A3A3A3;
+	padding: 15px 0;
+	border-top: 1px solid #D1D1D1;
+	clear: both;
+}
+
+footer p {
+	margin: 0;
+	line-height: 1.2em;
+}
+
+#attribution {
+	float: left;
+}
+
+#copyright {
+	float: left;
+	clear: left;
+}
+
+#ticker {
+	font-family: PFDinTextPro-Regular, Arial, sans-serif;
+	float: right;
+}
+
+footer em {
+	color: #5D5D5D;
+}
+
+.zendesk-logo {
+	color: #8FBD21;
 }

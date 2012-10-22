@@ -136,7 +136,6 @@ $(function(){
 		// updates to next train if local time passes the train's arrival time
 		if(($('#localTime').attr('datetime') - 60001) > $('#departureTime').attr('datetime')) {
 			getBikeFriendliness();
-			console.log("getBikeFriendliness() called!");
 		}
 	}, 1000);
 	prepareOrigin();
