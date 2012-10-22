@@ -25,7 +25,7 @@ function setLocalTime(){
 	$displayTime = $('#localTime');
 	$displayTime.empty()
 		.attr('datetime', currentTime.getTime())
-		.append(currentHours + ":" + currentMinutes + abbreviation);
+		.append(currentHours + '<span class="colon">:</span>' + currentMinutes + abbreviation);
 }
 
 function prepareOrigin(){
@@ -112,11 +112,11 @@ function getBikeFriendliness() {
 
 			if(bikeFriendly && i === 0) {
 				$('#result').empty()
-					.append('better mount up rough rider. Next train\'s at <time id="departureTime" datetime="' + Date.parse(departureTime).getTime() + '">' + departureTime + "</time>.");
+					.append('better mount up rough rider. Next train\'s at <time id="departureTime" datetime="' + Date.parse(departureTime).getTime() + '">' + departureTime + "</time>");
 				return false;
 			} else if(bikeFriendly && i > 0) {
 				$('#result').empty()
-					.append('just hang tight. Next train\'s coming at <time id="departureTime" datetime="' + Date.parse(departureTime).getTime() + '">' + departureTime + "</time>.");
+					.append('just hang tight. Next train\'s coming at <time id="departureTime" datetime="' + Date.parse(departureTime).getTime() + '">' + departureTime + "</time>");
 				return false;
 			}
 		});
@@ -131,8 +131,12 @@ function getBikeFriendliness() {
 $(function(){
 	setLocalTime();
 	setInterval(function(){
-		setLocalTime();
+		var currentTime = new Date();
+		var screenTime = new Date(Date.parse($('#localTime').text()));
 
+		if((currentTime.getTime() - screenTime.getTime()) > 60000){
+			setLocalTime();
+		}
 		// updates to next train if local time passes the train's arrival time
 		if(($('#localTime').attr('datetime') - 60001) > $('#departureTime').attr('datetime')) {
 			getBikeFriendliness();
