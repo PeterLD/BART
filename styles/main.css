@@ -86,6 +86,10 @@ section[role="main"] p {
 	margin: 0;
 }
 
+.blink {
+	visibility: hidden;
+}
+
 footer {
 	font-family: Arial;
 	font-size: 0.8em;

@@ -130,10 +130,16 @@ function getBikeFriendliness() {
 
 $(function(){
 	setLocalTime();
+
+	// runs every second
 	setInterval(function(){
 		var currentTime = new Date();
 		var screenTime = new Date(Date.parse($('#localTime').text()));
 
+		// toggles colon visibility
+		$('.colon').toggleClass('blink');
+
+		// updates local time every minute
 		if((currentTime.getTime() - screenTime.getTime()) > 60000){
 			setLocalTime();
 		}
@@ -142,6 +148,28 @@ $(function(){
 			getBikeFriendliness();
 		}
 	}, 1000);
+
+	// rotates bike image every 5 seconds, with animation
+	setInterval(function() {
+		var $bike = $('.bike');
+
+		if($bike.hasClass('bike1')){
+			$bike.fadeOut(function() {
+				$bike.removeClass('bike1')
+					.addClass('bike2')
+					.fadeIn();
+			});
+
+		} else {
+			$bike.fadeOut(function() {
+				$bike.removeClass('bike2')
+					.addClass('bike1')
+					.fadeIn();
+			});
+		}
+
+	}, 5000);
+
 	prepareOrigin();
 	prepareDestination();
 });
