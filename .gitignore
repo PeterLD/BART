@@ -1,4 +1,4 @@
 # Folder Config Files
 .DS_Store
-scripts/.DS_Store
-scripts/vendor/.DS_Store
+*/.DS_Store
+*/*/.DS_Store

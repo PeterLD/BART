@@ -1,1 +1,13 @@
-/* Will be compiled down to a single stylesheet with your sass files */
+body {
+	font-family: PFDinTextPro-Regular, Helvetica, Arial, sans-serif;
+}
+
+select {
+	font-family: PFDinTextPro-Regular;
+}
+
+h1 {
+	color: #1186D0;
+	text-transform: uppercase;
+	font-family: PFDinTextPro-Bold, Helvetica, Arial, sans-serif;
+}
