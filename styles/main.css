@@ -6,7 +6,7 @@ body {
 
 div[role="application"] {
 	margin: 0 auto;
-	width: 60%
+	width: 60%;
 }
 
 header {
@@ -134,4 +134,51 @@ footer em {
 	background: url(../images/zdsprite.png) no-repeat 0 -142px;
 	width: 67px;
 	height: 17px;
+}
+
+@media only screen and (max-width: 950px) {
+    div[role="application"] {
+    	width: 95%;
+    }
+}
+
+@media only screen and (max-width: 520px) {
+	body {
+		font-size: 75%;
+	}
+
+	header {
+		margin-top: 10px;
+	}
+
+	h1 {
+		font-size: 1.75em;
+	}
+
+	h2 {
+		display: none;
+	}
+
+	.bike1 {
+		margin-top: -7px;
+		background: url(../images/zdsprite.png) no-repeat 0 -159px;
+		width: 40px;
+		height: 28px;
+	}
+
+	.bike2 {
+		margin-top: -4px;
+		background: url(../images/zdsprite.png) no-repeat 0 -187px;
+		width: 40px;
+		height: 23px;
+	}
+
+	section[role="main"] {
+		padding: 10px 0;
+		font-size: 2em;
+	}
+
+	select {
+    	width: 100%;
+    }
 }
