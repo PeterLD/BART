@@ -105,22 +105,36 @@ footer p {
 	line-height: 1.2em;
 }
 
+footer a:link {
+	color: #5D5D5D;
+	text-decoration: none;
+	font-style: normal;
+	font-weight: bold;
+}
+
+footer a:visited {
+	color: #5D5D5D;
+}
+
+footer a:hover {
+	color: #009ADA;
+}
+
+footer a:active {
+	color: #6CAEC9;
+}
+
 #attribution {
 	float: left;
 }
 
 #copyright {
-	float: left;
-	clear: left;
+	float: right;
 }
 
 #ticker {
 	font-family: PFDinTextPro-Regular, Arial, sans-serif;
 	float: right;
-}
-
-footer em {
-	color: #5D5D5D;
 }
 
 .zendesk-logo {
@@ -134,6 +148,10 @@ footer em {
 	background: url(../images/zdsprite.png) no-repeat 0 -142px;
 	width: 67px;
 	height: 17px;
+}
+
+a.zendesk-logo:hover {
+	opacity: 0.7;
 }
 
 @media only screen and (max-width: 950px) {
